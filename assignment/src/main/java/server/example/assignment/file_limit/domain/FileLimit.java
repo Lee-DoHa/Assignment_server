@@ -2,10 +2,7 @@ package server.example.assignment.file_limit.domain;
 
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 @Getter
@@ -17,6 +14,9 @@ public class FileLimit {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String type;
+    private String name;
+
+    @Enumerated(EnumType.STRING)
+    private LimitType limitType;
 
 }

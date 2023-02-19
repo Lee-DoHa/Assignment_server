@@ -14,13 +14,15 @@ public class FileLimitController {
     private final FileLimitService fileLimitService;
 
     @PostMapping(value = "/fileLimit")
-    public void limit(@RequestBody String type) {
-        fileLimitService.create(type);
+    public void limit(@RequestBody String name) {
+        fileLimitService.create(name);
     }
 
     @DeleteMapping(value = "/fileLimit")
     public void delete(@RequestBody Long id) {
         fileLimitService.delete(id);
     }
+
+
 
 }

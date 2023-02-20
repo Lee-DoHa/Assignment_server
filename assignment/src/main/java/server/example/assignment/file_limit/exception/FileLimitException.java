@@ -1,12 +1,27 @@
 package server.example.assignment.file_limit.exception;
 
-public class FileLimitException extends RuntimeException{
+import lombok.Getter;
 
+import java.util.HashMap;
+import java.util.Map;
 
-    private final FileLimitExceptionType exceptionType;
+@Getter
+public abstract class FileLimitException extends RuntimeException{
 
-    public FileLimitException(FileLimitExceptionType exceptionType) {
-        this.exceptionType = exceptionType;
+    public final Map<String, String> validation = new HashMap<>();
+
+    public FileLimitException(String message) {
+        super(message);
+    }
+
+    public FileLimitException(String message, Throwable cause) {
+        super(message, cause);
+    }
+
+    public abstract int getStatusCode();
+
+    public void addValidation(String fieldName, String message) {
+        validation.put(fieldName, message);
     }
 
 }
